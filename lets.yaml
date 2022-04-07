@@ -1,0 +1,50 @@
+shell: /bin/sh
+
+commands:
+    build:
+      checksum:
+        - src/pyproject.toml
+        - Dockerfile
+      persist_checksum: true
+      cmd: |
+        if ${LETS_CHECKSUM_CHANGED} ; then
+          echo "> Building app..."
+          docker-compose build
+        fi
+
+    up:
+      description: Run app
+      depends:
+        - build
+      cmd: |
+        echo "> Srarting app"
+        docker-compose up
+        
+
+    stop:
+      description: Stop app
+      cmd: |
+        docker-compose down
+        docker container prune -f
+        echo "> App stopped"
+
+    bash:
+      description: Run bash in container
+      cmd: docker exec -it app bash
+
+    ishell:
+      description: Run ishell in container
+      cmd: docker exec -it app ipython
+
+    lint:
+      description: Run linters in container
+      cmd: |
+        docker exec -t app flakehell lint
+
+    format:
+      description: Run formaters in container
+      cmd: |
+        echo "> Run isort..."
+        docker exec -t app isort .
+        echo "> Run black..."
+        docker exec -t app black .

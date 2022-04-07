@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    image: 'app:latest'
+    container_name: app
+    build:
+      context: .
+      args:
+        - ENV=${ENV}
+        - PROJECT_DIR=${PROJECT_DIR}
+        - SRC_DIR=${SRC_DIR}
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - ./src:${PROJECT_DIR}${SRC_DIR}
+      - ./logs:${LOG_PATH}
+    networks:
+      - app_network
+    command: ${PROJECT_DIR}/start_reload.sh
+    env_file:
+      - ./.env
+
+networks:
+  app_network:

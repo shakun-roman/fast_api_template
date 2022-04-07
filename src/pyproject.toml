@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "Breakthrough Therapy"
+version = "0.1.0"
+description = "Digital solution where patients and clinicians meet via telehealth."
+authors = ["Raman Shakun <shakunroman@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.75.1"
+ipython = "^8.2.0"
+requests = "^2.27.1"
+uvicorn = "^0.17.6"
+stripe = "^2.70.0"
+loguru = "^0.6.0"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.942"
+pylint = "^2.13.4"
+isort = "^5.10.1"
+pytest = "^7.1.1"
+black = "^22.3.0"
+pytest-cov = "^3.0.0"
+flakehell = "^0.9.0"
+flake8 = "3.9.0"
+
+[tool.isort]
+profile = "black"
+line_length = 120
+py_version = 310
+lines_between_types = 1
+lines_after_imports = 2
+src_paths = ["src", "tests"]
+
+[tool.black]
+line-length = 120
+preview = true
+target-version = ['py310']
+
+[tool.flakehell]
+format = "grouped"
+max_line_length = 120
+show_source = true
+
+[tool.flakehell.plugins]
+pyflakes = ["+*"]
+"flake8-*" = ["+*"]
+pep8-naming = ["+*"]
+pycodestyle = ["+*"]
+flake8-isort = ["+*"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
