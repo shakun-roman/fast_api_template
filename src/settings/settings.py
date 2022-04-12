@@ -13,6 +13,12 @@ class Settings(BaseSettings):
     PROJECT_DIR: str
     SRC_DIR: str
 
+    POSTGRES_HOST: str
+    POSTGRES_PORT: int
+    POSTGRES_DB: str
+    POSTGRES_USER: str
+    POSTGRES_PASSWORD: str
+
     # DEFAULT ENV VARS
     LOG_LEVEL: str = "INFO"
     LOG_PATH: str = "/var/logs"

@@ -28,6 +28,26 @@ commands:
         docker container prune -f
         echo "> App stopped"
 
+    migration:
+      description: Make migration
+      options: |
+        Usage: lets migration (-m <message>)
+        
+        Options:
+          -m <message>  Message
+      cmd: |
+        docker exec -t app alembic revision --autogenerate -m "${LETSOPT_M}"
+
+    migrate:
+      description: Run migrations
+      options: |
+        Usage: lets migrate
+        
+        Options:
+          -m <message>  Message
+      cmd: |
+        docker exec -t app alembic upgrade head   
+
     bash:
       description: Run bash in container
       cmd: docker exec -it app bash

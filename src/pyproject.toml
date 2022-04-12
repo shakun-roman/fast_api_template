@@ -1,17 +1,20 @@
 [tool.poetry]
-name = "Breakthrough Therapy"
+name = "App"
 version = "0.1.0"
-description = "Digital solution where patients and clinicians meet via telehealth."
+description = ""
 authors = ["Raman Shakun <shakunroman@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 fastapi = "^0.75.1"
-ipython = "^8.2.0"
-requests = "^2.27.1"
 uvicorn = "^0.17.6"
-stripe = "^2.70.0"
 loguru = "^0.6.0"
+SQLAlchemy = "^1.4.35"
+databases = "^0.5.5"
+alembic = "^1.7.7"
+asyncpg = "^0.25.0"
+httpx = "^0.22.0"
+psycopg2 = "^2.9.3"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.942"
